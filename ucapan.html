@@ -150,19 +150,16 @@
     <div class="decor-line">｡･:*:･ﾟ★,｡･:*:･ﾟ☆</div>
     <h2>To Tiaradut wkwkw... 💌</h2>
     <div class="message-box">
-        <p>Thank youu yaa... for coming into my quiet little world🌍✨
-aku nggaa nyangka ada someone yang benar-benar stay, yang mau dengerin keluh kesahkuu tanpa buru-buru, yang hadir tanpa diminta, and tulus tanpa pamrih..
-duniaku sebelumnya tuh... ya, sepi sih ngga yaa tapi abu abuu.. bukan karena aku sendirian, tapi karena rasanya hampa. people come and go yeahh, nggaa ada yang benar-benar ngerti and say to stay with mee.. i was surrounded, but i felt invisible..
-lalu kamu datang.. nggak ribut, nggak maksa. just a soft presence that slowly filled the silence. kamu nggak nanya banyak, tapi keberadaanmu cukup. kamu nggak janji apa-apa, tapi tetap ada.
-thank you, for making me feel seen... for making me feel enough.
-dari banyaknya hal yang bikin aku goyah, kamu malah jadi titik yang bikin aku balik inget: aku pantes dapett perlakuan yang baik, and ngerasa ga sendiri lagii
-mungkin kamu gaa sadar seberapa besar pengaruhmuu..
-but for someone like me, who thought no one would ever care that deeply
-your presence? it means everything..
-thank u ya, bener-bener makasih banyaa..
-i hope this world is as kind to you, as you’ve been to me.
-stay warm, stay you..
-'cause people like you... they make this world feel less lonely 🌷
+        <p>heii youu, I want to tell you..
+semangatt belajarnya yaaa 📖🌤
+aku tauu belajar itu tidaa selaluu gampang… kadang tumpukannya banyak, kadang materinya bikin pusingg, kadang mood nya juga larii entah kemanaa 😵‍💫 dan kamu masih terus nyoba... masih duduk diam meskipun hatinya pengen rebahan seharian 😔
+that’s not a small thing, itu luar biasaa 🌷
+belajar tidaa harus sempurnaa. yang penting kamu mau paham pelan-pelan, mau ngulang meski capee, mau nanya meski kadang malu. itu udah bentuk usaha yang besar banget lohh...
+jadii kalau kamu mulai cape, please tidaa usah dipaksa terus menerus yaa. istirahatt itu juga bagian dari belajar. jangan sampai kamu ngelupain diri sendirii demi ngejar nilai yang ga sebanding sama tenangmu.
+aku liatt kamu bener-bener nyoba… dan i’m proud of you. super proud 🤍
+makasi yaa udah tetep mau belajar, walau situasi tidaa selalu ramah. makasii udah mau jalan terus walau pelan... itu tandaa kamu hebatt.
+jangan lupa juga bilang “makasi” ke diri sendirii… bcss udah kuat banget menjalani kegiatan sepanjang hari.
+slowly but surely yaa… you got this! 🌱✨
 </p>
     </div>
     <div class="decor-line">☆ﾟ･:*:･｡,★ﾟ･:*:･｡</div>
@@ -174,38 +171,49 @@ stay warm, stay you..
 
 <audio id="bgmusic" src="anything4u_trimmed.mp3" autoplay muted loop></audio>
 
-<!-- Tombol Musik di pojok kanan bawah -->
-<div id="musicToggle" style="position: fixed; bottom: 20px; right: 20px; z-index: 999; cursor: pointer; font-size: 28px;">
-  🔇
-</div>
-
 <script>
   const music = document.getElementById('bgmusic');
-  const toggle = document.getElementById('musicToggle');
+  const musicIcons = document.querySelectorAll('.music-icon');
+  let isPlaying = false;
 
-  // Autoplay: aktifkan audio saat pertama kali diklik
+  // Set waktu mulai
+  music.currentTime = 18;
+
+  // Autoplay setelah klik pertama
   window.addEventListener('click', () => {
-    if (music.paused) {
+    if (!isPlaying) {
       music.muted = false;
       music.play();
-      toggle.innerText = '🔊';
+      isPlaying = true;
+      updateIcons();
     }
   }, { once: true });
 
-  // Tombol toggle play/pause
-  toggle.addEventListener('click', (e) => {
-    e.stopPropagation(); // supaya tidak trigger autoplay lagi
-    if (music.paused) {
-      music.play();
-      toggle.innerText = '🔊';
-    } else {
-      music.pause();
-      toggle.innerText = '🔇';
-    }
+  function updateIcons() {
+    musicIcons.forEach(icon => {
+      icon.textContent = isPlaying ? '🔊' : '🔇';
+    });
+  }
+
+  musicIcons.forEach(icon => {
+    icon.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (isPlaying) {
+        music.pause();
+        isPlaying = false;
+      } else {
+        music.play();
+        isPlaying = true;
+      }
+      updateIcons();
+    });
   });
 </script>
 
+
+
 </body>
 </html>
+
 
 
