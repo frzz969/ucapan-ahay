@@ -172,50 +172,40 @@ stay warm, stay you..
     <div class="music-icon"></div>
 </div>
 
-<audio id="bg-music" autoplay>
-  <source src="anything4u_trimmed.mp3#t=18" type="audio/mpeg">
-  Browser kamu tidak mendukung pemutar audio.
-</audio>
+<audio id="bgmusic" src="anything4u_trimmed.mp3" autoplay muted loop></audio>
 
-<!-- Tombol play/pause -->
-<div id="music-toggle" style="position: fixed; bottom: 20px; right: 20px; background: #fff; padding: 10px; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.2); cursor: pointer; z-index: 999;">
-  🔈
+<!-- Tombol Musik di pojok kanan bawah -->
+<div id="musicToggle" style="position: fixed; bottom: 20px; right: 20px; z-index: 999; cursor: pointer; font-size: 28px;">
+  🔇
 </div>
 
 <script>
-  const music = document.getElementById("bg-music");
-  const toggle = document.getElementById("music-toggle");
+  const music = document.getElementById('bgmusic');
+  const toggle = document.getElementById('musicToggle');
 
-  let isPlaying = true;
-
-  function playMusic() {
-    music.play();
-    toggle.textContent = '🔈';
-    isPlaying = true;
-  }
-
-  function pauseMusic() {
-    music.pause();
-    toggle.textContent = '🔇';
-    isPlaying = false;
-  }
-
-  toggle.addEventListener("click", () => {
-    if (isPlaying) {
-      pauseMusic();
-    } else {
-      playMusic();
-    }
-  });
-
-  // Safari/Chrome autoplay policy: trigger playback after interaction
-  window.addEventListener("click", () => {
+  // Autoplay: aktifkan audio saat pertama kali diklik
+  window.addEventListener('click', () => {
     if (music.paused) {
-      playMusic();
+      music.muted = false;
+      music.play();
+      toggle.innerText = '🔊';
+    }
+  }, { once: true });
+
+  // Tombol toggle play/pause
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation(); // supaya tidak trigger autoplay lagi
+    if (music.paused) {
+      music.play();
+      toggle.innerText = '🔊';
+    } else {
+      music.pause();
+      toggle.innerText = '🔇';
     }
   });
 </script>
 
 </body>
 </html>
+
 
