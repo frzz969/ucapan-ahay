@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I want to say</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: #ffe6f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 10px;
+    }
+    .page {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border: 5px dashed #ff99cc;
+        border-radius: 30px;
+        padding: 30px 20px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        max-width: 400px;
+        background: white;
+        position: relative;
+        overflow-y: auto;
+        max-height: 95vh;
+    }
+    .active { display: flex; }
+    h1, h2 {
+        color: #ff4d88;
+        text-shadow: 2px 2px #ffe6f0;
+        margin-bottom: 15px;
+    }
+    button {
+        background-color: #ff99cc;
+        color: #fff;
+        border: none;
+        padding: 12px 25px;
+        font-size: 16px;
+        border-radius: 25px;
+        cursor: pointer;
+        margin: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transition: background 0.3s;
+        text-decoration: none;
+    }
+    button:hover { background-color: #ff66a3; }
+    .music-icon {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        background-color: #ff99cc;
+        border-radius: 50%;
+        padding: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .music-icon::before { content: "🎵"; font-size: 20px; }
+
+    /* Page 1 animation */
+    .love-animation {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 20px;
+        overflow: hidden;
+        background-color: #ffe6f0;
+        border-radius: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .love {
+        position: absolute;
+        top: -50px;
+        left: 50%;
+        font-size: 30px;
+        animation: fall 3s linear infinite;
+        color: #ff4d88;
+    }
+    @keyframes fall {
+        0% { transform: translateX(0) translateY(0); opacity: 1; }
+        100% { transform: translateX(-50px) translateY(250px); opacity: 0; }
+    }
+
+    /* Page 2 emoji amplop besar */
+    .envelope-emoji {
+        font-size: 120px;
+        margin: 20px 0;
+    }
+
+    /* Page 3 tambahan desain */
+    .decor-line {
+        font-size: 20px;
+        color: #ff99cc;
+        margin: 10px 0;
+    }
+    .message-box {
+        background: #fff0f5;
+        border: 3px dotted #ff99cc;
+        border-radius: 20px;
+        padding: 25px 20px;
+        max-width: 320px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+        overflow-y: auto;
+    }
+    p {
+        font-size: 15px;
+        color: #333;
+        text-align: left;
+        line-height: 1.6;
+        white-space: pre-wrap;
+    }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+    <div class="love-animation">
+        <div class="love" style="left:20%;">💖</div>
+        <div class="love" style="left:40%; animation-delay: 1s;">💗</div>
+        <div class="love" style="left:60%; animation-delay: 0.5s;">💞</div>
+        <div class="love" style="left:80%; animation-delay: 1.5s;">💓</div>
+    </div>
+    <h1>HII!<br>GOOD NIGHTT<br>TIARAA</h1>
+    <p>(1 August 2025)</p>
+    <p>Click the next button!! (つ◕‿◕)つ ♥</p>
+    <button onclick="nextPage(2)">Next!! ~w~</button>
+    <div class="music-icon"></div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+    <div class="envelope-emoji">📩</div>
+    <h2>Do you want to open it?</h2>
+    <p>"ヾ(￣◇￣)ノ"</p>
+    <div>
+        <button onclick="nextPage(3)">Open it</button>
+        <button onclick="alert('No problem~ (´｡• ᵕ •｡`) ♡')">No ty</button>
+    </div>
+    <div class="music-icon"></div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+    <div class="decor-line">｡･:*:･ﾟ★,｡･:*:･ﾟ☆</div>
+    <h2>To Tiaradut wkwkw... 💌</h2>
+    <div class="message-box">
+        <p>Thank youu yaa... for coming into my quiet little world🌍✨
+aku nggaa nyangka ada someone yang benar-benar stay, yang mau dengerin keluh kesahkuu tanpa buru-buru, yang hadir tanpa diminta, and tulus tanpa pamrih..
+duniaku sebelumnya tuh... ya, sepi sih ngga yaa tapi abu abuu.. bukan karena aku sendirian, tapi karena rasanya hampa. people come and go yeahh, nggaa ada yang benar-benar ngerti and say to stay with mee.. i was surrounded, but i felt invisible..
+lalu kamu datang.. nggak ribut, nggak maksa. just a soft presence that slowly filled the silence. kamu nggak nanya banyak, tapi keberadaanmu cukup. kamu nggak janji apa-apa, tapi tetap ada.
+thank you, for making me feel seen... for making me feel enough.
+dari banyaknya hal yang bikin aku goyah, kamu malah jadi titik yang bikin aku balik inget: aku pantes dapett perlakuan yang baik, and ngerasa ga sendiri lagii
+mungkin kamu gaa sadar seberapa besar pengaruhmuu..
+but for someone like me, who thought no one would ever care that deeply
+your presence? it means everything..
+thank u ya, bener-bener makasih banyaa..
+i hope this world is as kind to you, as you’ve been to me.
+stay warm, stay you..
+'cause people like you... they make this world feel less lonely 🌷
+</p>
+    </div>
+    <div class="decor-line">☆ﾟ･:*:･｡,★ﾟ･:*:･｡</div>
+    <a href="https://wa.me/62XXXXXXXXXXX" target="_blank">
+        <button>Reply me</button>
+    </a>
+    <div class="music-icon"></div>
+</div>
+
+<script>
+function nextPage(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page' + page).classList.add('active');
+}
+</script>
+
+</body>
+</html>
