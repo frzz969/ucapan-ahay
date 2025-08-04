@@ -169,35 +169,42 @@ slowly but surely yaa… you got this! 🌱✨
     <div class="music-icon"></div>
 </div>
 
-<audio id="bgmusic" src="anything4u_trimmed.mp3" autoplay muted loop></audio>
+<audio id="bgmusic" src="anything4u_trimmed.mp3" loop></audio>
 
 <script>
   const music = document.getElementById('bgmusic');
   const musicIcons = document.querySelectorAll('.music-icon');
   let isPlaying = false;
+  let isFirstClick = true;
 
-  // Set waktu mulai
-  music.currentTime = 18;
+  // Set tombol icon awal
+  updateIcons();
 
-  // Autoplay setelah klik pertama
-  window.addEventListener('click', () => {
-    if (!isPlaying) {
-      music.muted = false;
-      music.play();
-      isPlaying = true;
-      updateIcons();
+  // Event klik pertama di mana pun (aktifkan musik & next tetap bisa)
+  document.addEventListener('click', (e) => {
+    if (isFirstClick) {
+      music.currentTime = 18;
+      music.play().then(() => {
+        isPlaying = true;
+        updateIcons();
+      }).catch((err) => {
+        console.warn("Autoplay diblokir browser:", err);
+      });
+      isFirstClick = false;
     }
-  }, { once: true });
+  });
 
+  // Fungsi update ikon musik
   function updateIcons() {
     musicIcons.forEach(icon => {
       icon.textContent = isPlaying ? '🔊' : '🔇';
     });
   }
 
+  // Event klik di icon musik untuk ON/OFF
   musicIcons.forEach(icon => {
     icon.addEventListener('click', (e) => {
-      e.stopPropagation();
+      e.stopPropagation(); // Biar ga trigger klik pertama halaman
       if (isPlaying) {
         music.pause();
         isPlaying = false;
@@ -208,12 +215,20 @@ slowly but surely yaa… you got this! 🌱✨
       updateIcons();
     });
   });
-</script>
 
+  // Fungsi untuk pindah halaman
+  function nextPage(pageNumber) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(`page${pageNumber}`).classList.add('active');
+  }
+
+  window.nextPage = nextPage; // supaya bisa dipanggil dari HTML button
+</script>
 
 
 </body>
 </html>
+
 
 
 
